@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/calc.css">
+</head>
+
+<body>
+
+<nav id="navbar">
+    <div id="Logo"><h1>SmartPlate</h1></div>
+
+    <div id="list">
+        <ul>
+            <li><a id="home" href="/userHome.html">Home</a></li>
+            <li><a id="Calculator" href="/calculator.html">Calculator</a></li>
+            <li><a id="search" href="/search.html">Search</a></li>
+            <li><a id="profilenav" href="/profile.html">Profile</a></li>
+        </ul>
+    </div>
+
+    <div id="user_logout">
+        <div id="profile">
+            <i class="fa-solid fa-user"></i>
+            <p>Username</p>
+        </div>
+
+        <div id="Logout">
+            <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="header">
+        <h1>
+            <i class="fa-solid fa-calculator"></i>
+            Calorie Calculator
+        </h1>
+        <p>Calculate your daily caloric needs based on your personal information, or determine the calories in your meals using macronutrient breakdown.</p>
+    </div>
+
+    <div class="tabs">
+        <div class="tab-list">
+            <button class="tab-button active" onclick="switchTab('person')">
+                <i class="fa-regular fa-user"></i>
+                Personal Calculator
+            </button>
+            <button class="tab-button" onclick="switchTab('meal')">
+                <i class="fa-solid fa-utensils"></i>
+                Meal Calculator
+            </button>
+        </div>
+
+        <div id="person-tab" class="tab-content active">
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa-regular fa-user"></i>
+                            Personal Information
+                        </h3>
+                        <p class="card-description">Enter your details to calculate your daily caloric needs</p>
+                    </div>
+                    <div class="card-content">
+                        <form id="person-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="age">Age (years)</label>
+                                    <input type="number" id="age" placeholder="25" min="1" max="120">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select id="gender">
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="weight">Weight (kg)</label>
+                                    <input type="number" id="weight" placeholder="70" min="1" step="0.1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="height">Height (cm)</label>
+                                    <input type="number" id="height" placeholder="175" min="1">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="activity">Activity Level</label>
+                                <select id="activity">
+                                    <option value="">Select activity level</option>
+                                    <option value="sedentary">Sedentary (little/no exercise)</option>
+                                    <option value="light">Light (light exercise 1-3 days/week)</option>
+                                    <option value="moderate">Moderate (moderate exercise 3-5 days/week)</option>
+                                    <option value="active">Active (hard exercise 6-7 days/week)</option>
+                                    <option value="veryActive">Very Active (very hard exercise, physical job)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="goal">Goal</label>
+                                <select id="goal">
+                                    <option value="">Select your goal</option>
+                                    <option value="lose2">Lose 2 lbs/week (aggressive)</option>
+                                    <option value="lose1">Lose 1 lb/week (moderate)</option>
+                                    <option value="maintain">Maintain weight</option>
+                                    <option value="gain1">Gain 1 lb/week (moderate)</option>
+                                    <option value="gain2">Gain 2 lbs/week (aggressive)</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="button" onclick="calculatePersonCalories()">
+                                Calculate Calories
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Your Results</h3>
+                        <p class="card-description">Calculated based on the Mifflin-St Jeor equation</p>
+                    </div>
+                    <div class="card-content">
+                        <div id="person-results">
+                            <div class="result-card bmr">
+                                <span>Basal Metabolic Rate (BMR)</span>
+                                <span class="result-value" id="bmr-value">0 cal</span>
+                            </div>
+                            <p class="help-text">Calories burned at rest (basic body functions)</p>
+
+                            <div class="separator"></div>
+
+                            <div class="result-card tdee">
+                                <span>Total Daily Energy Expenditure (TDEE)</span>
+                                <span class="result-value" id="tdee-value">0 cal</span>
+                            </div>
+                            <p class="help-text">Total calories burned including activity</p>
+
+                            <div class="separator"></div>
+
+                            <div class="result-card goal">
+                                <span>Goal Calories</span>
+                                <span class="result-value" id="goal-value">0 cal</span>
+                            </div>
+                            <p class="help-text">Daily calories to reach your goal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="meal-tab" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Meal Macronutrients
+                        </h3>
+                        <p class="card-description">Enter the macronutrient content of your meal in grams</p>
+                    </div>
+                    <div class="card-content">
+                        <form id="meal-form">
+                            <div class="form-group">
+                                <label for="protein">Protein (g)</label>
+                                <input type="number" id="protein" placeholder="25" min="0" step="0.1" oninput="calculateMealCalories()">
+                                <p class="help-text">4 calories per gram</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carbs">Carbohydrates (g)</label>
+                                <input type="number" id="carbs" placeholder="30" min="0" step="0.1" oninput="calculateMealCalories()">
+                                <p class="help-text">4 calories per gram</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fat">Fat (g)</label>
+                                <input type="number" id="fat" placeholder="15" min="0" step="0.1" oninput="calculateMealCalories()">
+                                <p class="help-text">9 calories per gram</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fiber">Fiber (g) - Optional</label>
+                                <input type="number" id="fiber" placeholder="5" min="0" step="0.1" oninput="calculateMealCalories()">
+                                <p class="help-text">2 calories per gram</p>
+                            </div>
+
+                            <button type="button" class="button" onclick="calculateMealCalories()">
+                                Calculate Meal Calories
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Meal Calories</h3>
+                        <p class="card-description">Total calories from macronutrients</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="meal-result">
+                            <div class="meal-total" id="meal-total">0</div>
+                            <div class="meal-label">Total Calories</div>
+                        </div>
+
+                        <div id="macro-breakdown" class="macro-grid" style="display: none;">
+                            <div class="macro-card protein">
+                                <div class="macro-name">Protein</div>
+                                <div class="macro-value" id="protein-cal">0 cal</div>
+                            </div>
+                            <div class="macro-card carbs">
+                                <div class="macro-name">Carbs</div>
+                                <div class="macro-value" id="carbs-cal">0 cal</div>
+                            </div>
+                            <div class="macro-card fat">
+                                <div class="macro-name">Fat</div>
+                                <div class="macro-value" id="fat-cal">0 cal</div>
+                            </div>
+                            <div class="macro-card fiber">
+                                <div class="macro-name">Fiber</div>
+                                <div class="macro-value" id="fiber-cal">0 cal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card notes-card">
+        <div class="card-header">
+            <h3 class="card-title">Important Notes</h3>
+        </div>
+        <div class="card-content">
+            <div class="notes-list">
+                <p>• The personal calorie calculator uses the Mifflin-St Jeor equation, which is considered one of the most accurate formulas for calculating BMR.</p>
+                <p>• Results are estimates and individual needs may vary based on genetics, medical conditions, and other factors.</p>
+                <p>• For meal calculations: Protein and carbohydrates provide 4 calories per gram, fat provides 9 calories per gram, and fiber provides approximately 2 calories per gram.</p>
+                <p>• Always consult with a healthcare professional or registered dietitian for personalized nutrition advice.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer id="footInfo">
+
+            <div id="links" class="footer_divs">
+                <h4>Quick Links</h4>
+                <ul class="foot_list">
+
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div id="company" class="footer_divs">
+                <h4>Company</h4>
+                <ul class="foot_list">
+
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">careers</a></li>
+                    <li><a href="#">Press</a></li>
+
+                </ul>
+            </div>
+
+            <div id="product" class="footer_divs">
+                <h4>Social</h4>
+                <ul class="foot_list">
+
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instgram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+
+            <div id="resources" class="footer_divs">
+                <h4>Resources</h4>
+                <ul class="foot_list">
+
+                    <li><a href="#">Application</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Sytems</a></li>
+                </ul>
+            </div>
+
+        </footer>
+
+    <script src="/JS/calc.js"></script>
+    <script src="/JS/top.js"></script>
+</body>
+</html>

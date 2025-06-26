@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPlate</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/signup.css">
+</head>
+<body>
+    <div id="top">
+
+        <div id="logo">
+            <h1>SmartPlate</h1>
+        </div>
+
+        <div id="listbox">
+            <ul id="list">
+                <li><a id="about" href="/About.html">About</a></li>
+                <li><a id="Logintop" href="Login.html">Login</a></li>
+                <li><a  id="signuptop" href="Signup.html">Signup</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="container">
+        <div id="welcome" class="signbox">
+            <p id="welmsg">
+                New here? Join us to track, analyze, and eat smarter!
+            </p>
+        </div>
+        <div id="Signup" class="signbox">
+             <h1 id="signuplable">Signup</h1>
+            <p id ="welback" style="color: dimgray;"><small>Welcome back! Please enter your details</small></p>
+
+            <div id="input">
+                <form id="form" action="" method="get">
+                    
+                    <div id="nameemail"> 
+
+                        <div id="namebox"> 
+                            <i id="icon" class="fa-solid fa-user"></i>
+                            <label for="name">Name</label>
+                            <input id="name" class="inputclass" type="text" required>
+                        </div>
+                        
+                        <div id="emailbox"> 
+                            <i id="icon" class="fa-solid fa-envelope"></i>
+                            <label for="email">Email</label>
+                            <input id="email" class="inputclass" type="email" required>
+                        </div>
+                        
+                    </div>
+                    
+                    <div id="c_pass">    
+                        <div id="passwordbox"> 
+                            <i id="icon" class="fa-solid fa-key"></i>
+                            <label for="password">Password</label>
+                            <input id="password" class="inputclass" type="password" required min="8">
+                        </div>
+                        
+                        <div id="cpasswordbox"> 
+                            <i id="icon" class="fa-solid fa-key"></i>
+                            <label for="cpassword">Confirm Password</label>
+                            <input id="cpassword" class="inputclass" type="password" required min="8">
+                        </div>
+                    </div>        
+                    
+                    <div id="ageHeightWeight">
+
+                        <div id="agebox"> 
+                            <label id="labage" for="age">Age</label>
+                            <input id="age" class="ninput" type="number" required>
+                        </div>
+
+                        <div id="heightbox"> 
+                            <i id="icon" class="fa-solid fa-ruler-vertical"></i>
+                            <label for="height">Height</label>
+                            <input id="height" class="ninput" type="number" required placeholder="Cm">
+                        </div>
+                        
+                        <div id="weightbox"> 
+                            <i id="icon" class="fa-solid fa-weight-scale"></i>
+                            <label for="weight">Weight</label>
+                            <input id="weight" class="ninput" type="number" required placeholder="Kg">
+                        </div>
+
+                    </div>
+
+
+                    <div id="Genderbox"> 
+                        
+                        <div id="malebox">
+                            <input id="rmale" type="radio" name="Gender" value="Male">
+                            <label for="rmale">Male</label>
+                        </div>
+
+                        <div id="femalebox">
+                            <input type="radio" name="Gender" id="rfemale" value="Female">
+                            <label for="rfemale">Female</label>
+                        </div>
+                    </div>
+
+                    <div id="signbtnbox">
+                        <button type="submit" id="signupbtn">Signup</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    
+    <script src="/JS/top.js"></script>
+</body>
+</html>

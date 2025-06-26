@@ -1,0 +1,424 @@
+body{
+    height: 100vh;
+    width: auto;
+    margin: 0;
+    display: flex;
+    background-image: url(/images/016213f8-8489-4811-8b04-6f5e419ac6c7.jpg);
+    background-size: cover;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top{
+    width:100%;
+    height: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 13px 20px 0px rgba(23, 26, 39, 0.10);
+}
+#logo{
+    width: 50%;
+    margin-left: 20px;
+    color:rgb(222, 212, 193);
+}
+
+#listbox{
+    width: 25%;
+}
+
+#list{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 25px;
+    border: solid transparent;
+    border-radius:15px ;
+    padding-left: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#list li a{
+    color: black;
+    text-decoration: none;
+    font-size: larger;
+}
+
+#list li a:hover{
+    color:white;
+}
+
+.signbox{
+    border: solid white;
+    width: 600px;
+    height: 600px;
+}
+
+#container{
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+#welcome{
+    width: 50%;
+    height: 80%;
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-image: url(/images/1000_F_239063945_TOftLnSLduQQohDKOP86lfscoGpwNJ7g.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20%;
+}
+#Signup{
+    height: 80%;
+    width: 60%;
+    margin-right: 20%;
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#welmsg{
+    font-family: "Edu NSW ACT Hand Pre", cursive;
+    font-weight: 700;
+    font-size: xx-large;
+    word-spacing: 2px;
+    color: whitesmoke;
+    padding-top: 100px;
+    padding-left: 15px;
+}
+
+#signuplable{
+    color: black;
+    font-family:sans-serif;    
+    font-weight: 700;
+    height: 10%;
+    margin-bottom: 0;
+}
+#input{
+    width: 100%;
+    height: 80%;
+}
+#form{
+    height: 100%;
+}
+.inputclass{
+    width: 200px;
+    display: block; 
+    border: solid 1px ;
+    border-radius: 5px; 
+    height: 30px;
+    outline: none;
+    margin-top: 5px;
+
+    color: #333333; 
+    font-size: 16px; 
+    font-family: Arial, sans-serif; 
+    padding-left: 15px;
+}
+.inputclass:focus{
+    background-color: whitesmoke;
+}
+
+#emailbox{
+    display: inline;
+}
+#passwordbox{
+    display: inline;
+}
+
+div label{
+    font-size: 14px;
+    color: black;
+    font-family: sans-serif;
+}
+
+#nameemail{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+.ninput{
+    width: 45px;
+    display: block; 
+    border: solid 1px ;
+    border-radius: 5px; 
+    height: 30px;
+    outline: none;
+    margin-top: 5px;
+
+    color: #333333; 
+    font-size: 16px; 
+    font-family: Arial, sans-serif; 
+    padding-left: 20px; 
+}
+.ninput:focus{
+    background-color: whitesmoke;
+}
+.ninput::placeholder {
+    color: #999999;
+    font-style: italic;
+    font-size: 14px;
+}
+#signupbtn{
+    width: 80%;
+    height: 40px;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    margin-bottom: 10px;
+    margin-left: 42.5px;
+    margin-top: 10px;
+}
+#c_pass{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+#ageHeightWeight{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+#labage{
+    padding-left: 18px;
+}
+#Genderbox{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+#signupbtn:hover{
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+/* Enhanced Responsive Design */
+@media only screen and (max-width: 1267px) {
+    .inputclass{
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 1191px) {
+    #welmsg{
+        font-size: x-large; 
+    }
+}
+
+@media only screen and (max-width: 1088px) {
+    .inputclass{
+        width: 135px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .inputclass{
+        width: 125px;
+    }
+
+    #icon, div label{
+        font-size: 13px;
+    }
+
+    #signupbtn{
+        margin-left: 30px;
+    }
+}
+
+@media only screen and (max-width: 977px) {
+    #welmsg{
+        font-size: larger; 
+    }
+
+    .inputclass{
+        width: 115px;
+    }
+
+    #listbox{
+        width: 30%;
+    }
+    #signupbtn{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 849px) {
+    .inputclass{
+        width: 100px;
+    }
+
+    #icon, div label{
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Mobile Layout - Stack vertically */
+    #container {
+        flex-direction: column;
+        height: auto;
+        min-height: 80%;
+    }
+
+    #welcome {
+        width: 90%;
+        height: 200px;
+        margin: 0 5%;
+        border-radius: 20px 20px 0 0;
+        border-right: solid white;
+    }
+
+    #Signup {
+        width: 90%;
+        height: auto;
+        min-height: 500px;
+        margin: 0 5%;
+        border-radius: 0 0 20px 20px;
+        border-left: solid white;
+        padding-bottom: 20px;
+    }
+
+    #welmsg {
+        font-size: large;
+        padding-top: 50px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Header adjustments for mobile */
+    #top {
+        height: auto;
+        min-height: 60px;
+        padding: 10px 0;
+    }
+
+    #logo {
+        width: 60%;
+        margin-left: 10px;
+    }
+
+    #logo h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    #listbox {
+        width: 35%;
+    }
+
+    #list {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    #list li a {
+        font-size: medium;
+        padding: 5px;
+    }
+
+    /* Form adjustments for mobile */
+    .inputclass {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .ninput {
+        width: 60px;
+    }
+
+    #nameemail, #c_pass {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    #ageHeightWeight {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    #signupbtn {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    body {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Extra small screens */
+    #logo h1 {
+        font-size: 1.2rem;
+    }
+
+    #list {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    #listbox {
+        width: 40%;
+    }
+
+    #welmsg {
+        font-size: medium;
+        padding-top: 30px;
+    }
+
+    #welcome {
+        height: 150px;
+    }
+
+    .inputclass {
+        max-width: 200px;
+    }
+
+    .ninput {
+        width: 50px;
+    }
+
+    #ageHeightWeight {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div label, #icon {
+        font-size: 12px;
+    }
+
+    #signuplable {
+        font-size: 1.5rem;
+    }
+
+    #welback {
+        font-size: x-small;
+        text-align: center;
+        padding: 0 10px;
+    }
+}
