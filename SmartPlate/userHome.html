@@ -11,12 +11,16 @@
     <link rel="stylesheet" href="/CSS/userhome.css">
 </head>
 <body>
-    <div id="container">
-
+   <div id="container">
         <nav id="navbar">
-
-            <div id="Logo"><h1>SmartPlate</h1></div>
-
+            <div id="Logo">
+                <h1>SmartPlate</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <div id="list">
                 <ul>
                     <li><a id="home" href="/userHome.html">Home</a></li>
@@ -25,338 +29,236 @@
                     <li><a id="profilenav" href="/profile.html">Profile</a></li>
                 </ul>
             </div>
-
+            
             <div id="user_logout">
                 <div id="profile">
                     <i class="fa-solid fa-user"></i>
                     <p>Username</p>
                 </div>
-
                 <div id="Logout">
                     <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
             </div>
-
-        </nav>
-
-        <section id="content">
-
-        
             
+        </nav>
+        
+        <section id="content">
             <div id="carb_pro_fat">
-
                 <div id="carbs">
-
                     <div id="log_totalcal">
-
                         <div id="logo_cal">
                             <i class="fa-solid fa-bowl-rice"></i>
                             <p id="cal_title"><b>Carbs</b></p>
                         </div>
-
                         <div id="total_cal">
                             <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>190</b><sub>Gram</sub></p>
                             <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
                         </div>
-
                     </div>
-
                     <div id="progress">
-
-                        <div id="current_cal_container" >
+                        <div id="current_cal_container">
                             <p id="current_cal"><b>95</b> <sub style="color: gray;">/Gram</sub></p>
                         </div>
-
                         <div class="progress-container">
                             <div id="boundry">
                                 <p id="strt">0</p>
                                 <p id="end">190</p>
                             </div>
-                        
                             <div class="progress-bar-fill" id="custom-progress"></div>
                         </div>
-
-
                     </div>
-
-
                 </div>
-
                 <div id="protein">
-
                     <div id="log_totalcal">
-
                         <div id="logo_cal">
                             <i class="fa-solid fa-drumstick-bite"></i>
                             <p id="cal_title"><b>Protein</b></p>
                         </div>
-
                         <div id="total_cal">
                             <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>250</b><sub>Gram</sub></p>
                             <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
                         </div>
-
                     </div>
-
                     <div id="progress">
-
-                        <div id="current_cal_container" >
+                        <div id="current_cal_container">
                             <p id="current_cal"><b>95</b> <sub style="color: gray;">/Gram</sub></p>
                         </div>
-
                         <div class="progress-container">
                             <div id="boundry">
                                 <p id="strt">0</p>
                                 <p id="end">250</p>
                             </div>
-                        
                             <div class="progress-bar-fill" id="custom-progress"></div>
-
                         </div>
-
                     </div>
                 </div>
-                
                 <div id="fats">
-
                     <div id="log_totalcal">
-
                         <div id="logo_cal">
                             <img style="width: 20px; height: 20px;" src="/images/download-removebg-preview.png" alt="">
                             <p id="cal_title"><b>Fats</b></p>
                         </div>
-
                         <div id="total_cal">
                             <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>150</b><sub>Gram</sub></p>
                             <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
                         </div>
-
                     </div>
-
                     <div id="progress">
-
-                        <div id="current_cal_container" >
+                        <div id="current_cal_container">
                             <p id="current_cal"><b>80</b> <sub style="color: gray;">/Gram</sub></p>
                         </div>
-
                         <div class="progress-container">
                             <div id="boundry">
                                 <p id="strt">0</p>
                                 <p id="end">150</p>
                             </div>
-                        
                             <div class="progress-bar-fill" id="custom-progress"></div>
+                        </div>
                     </div>
-
                 </div>
-                
             </div>
-
         </section>
-
+        
         <section id="weight_water">
-            
-             <div id="Calories">
-
+            <div id="Calories">
                 <div id="log_totalcal">
-
                     <div id="logo_cal">
-                        <i id="logo"  class="fa-solid fa-fire"></i>
+                        <i id="logo" class="fa-solid fa-fire"></i>
                         <p id="cal_title"><b>Calories</b></p>
                     </div>
-
                     <div id="total_cal">
                         <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>2350</b><sub>Cal</sub></p>
                         <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
                     </div>
-
                 </div>
-
                 <div id="progress">
-
-                    <div id="current_cal_container" >
+                    <div id="current_cal_container">
                         <p id="current_cal"><b>2000</b> <sub style="color: gray;">/Cal</sub></p>
                     </div>
-
                     <div class="progress-container">
                         <div id="boundry">
                             <p id="strt">0</p>
                             <p id="end">2350</p>
                         </div>
-                       
                         <div class="progress-bar-fill" id="custom-progress"></div>
                     </div>
-
-
                 </div>
-
-                
             </div>
-
             <div id="weight">
-                    <div id="log_totalcal">
-
-                            <div id="logo_cal">
-                                
-                                <i class="fa-solid fa-weight-scale"></i>
-                                <p id="cal_title"><b>Weight</b></p>
-                            </div>
-
-                            <div id="total_cal">
-                                <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>180</b><sub>Cm</sub></p>
-                                <p style="margin-top: 0;color: gray;"><small>Tall body</small></p>
-                            </div>
-
+                <div id="log_totalcal">
+                    <div id="logo_cal">
+                        <i class="fa-solid fa-weight-scale"></i>
+                        <p id="cal_title"><b>Weight</b></p>
                     </div>
-                    <div id="current_weight">
-                        <p style="font-size: x-large;" id="Num_weight"><b>86</b><sub style="color: grey;">Kg</sub></p>
-                        <p id="Healthy">Healthy weight is 80-90</p>
+                    <div id="total_cal">
+                        <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>180</b><sub>Cm</sub></p>
+                        <p style="margin-top: 0;color: gray;"><small>Tall body</small></p>
                     </div>
+                </div>
+                <div id="current_weight">
+                    <p style="font-size: x-large;" id="Num_weight"><b>86</b><sub style="color: grey;">Kg</sub></p>
+                    <p id="Healthy">Healthy weight is 80-90</p>
+                </div>
             </div>
-            
-            
             <div id="water">
-
-
-                 <div id="log_totalcal">
+                <div id="log_totalcal">
                     <div id="logo_cal">
                         <i class="fa-solid fa-glass-water"></i>
                         <p id="cal_title"><b>Water</b></p>
                     </div>
-
                     <div id="total_cal">
                         <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>2.5</b><sub>Liter</sub></p>
                         <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
                     </div>
                 </div>
-
-
                 <div id="progress">
-
-                    <div id="current_cal_container" >
+                    <div id="current_cal_container">
                         <p id="current_cal"><b>1.5</b> <sub style="color: gray;">/Liter</sub></p>
                     </div>
-
                     <div class="progress-container">
                         <div id="boundry">
                             <p id="strt">0</p>
                             <p id="end">2.5</p>
                         </div>
-                    
                         <div class="progress-bar-fill" id="custom-progress"></div>
+                    </div>
                 </div>
-
             </div>
-
-        </section>        
+        </section>
         
         <section id="mealcontainer">
-
-
             <div id="meal_title">
                 <h1>MEAL CARDS</h1>
             </div>
-
             <div id="Meal_cards">
-                
                 <div class="card">
-
                     <div class="meal_img">
-                        <img src="/images/pizza.jpeg" alt="">
+                        <img src="/images/pizaa.jpeg" alt="">
                     </div>
-
                     <div class="meal_details">
-
                         <div class="name_done">
                             <p class="meal_name"><i class="fa-solid fa-utensils"></i><b>Pizza Diet</b></p>
-
                             <div class="is_eaten_container">
                                 <input class="is_eaten" type="checkbox">
                                 <label for="is_eaten">Done</label>
                             </div>
-
                         </div>
-
                         <div class="meal_cal">
                             <p>Calories: 1200 <sub>Cal</sub></p>
                         </div>
-
                         <div class="meal_pro">
                             <p>Protein: 1200 <sub>Gram</sub></p>
                         </div>
-
                         <div class="meal_fat">
                             <p>Fats: 1200 <sub>Gram</sub></p>
                         </div>
-
                         <div class="meal_car">
                             <p>Carbs: 1200 <sub>Gram</sub></p>
                         </div>
-                        
                     </div>
-
-
                 </div>
-
                 <div id="add_meal" class="card">
-
                     <a id="plus" href="/Addmeal.html"><i class="fa-solid fa-plus"></i></a>
-
                 </div>
-
-                
             </div>
-
-
         </section>
-
-
+        
         <footer id="footInfo">
-
             <div id="links" class="footer_divs">
                 <h4>Quick Links</h4>
                 <ul class="foot_list">
-
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
-
             <div id="company" class="footer_divs">
                 <h4>Company</h4>
                 <ul class="foot_list">
-
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">careers</a></li>
                     <li><a href="#">Press</a></li>
-
                 </ul>
             </div>
-
             <div id="product" class="footer_divs">
                 <h4>Social</h4>
                 <ul class="foot_list">
-
                     <li><a href="#">Facebook</a></li>
                     <li><a href="#">Instgram</a></li>
                     <li><a href="#">Twitter</a></li>
                 </ul>
             </div>
-
             <div id="resources" class="footer_divs">
                 <h4>Resources</h4>
                 <ul class="foot_list">
-
                     <li><a href="#">Application</a></li>
                     <li><a href="#">Documentation</a></li>
                     <li><a href="#">Sytems</a></li>
                 </ul>
             </div>
-
         </footer>
-
-        <script src="/JS/top.js"></script>
     </div>
+    <script src="/JS/top.js"></script>
+    <script src="/JS/userHome.js"></script>
 </body>
 </html>

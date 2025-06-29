@@ -1,429 +1,596 @@
 body{
+   margin: 0;
+    padding: 0;
+    width: 100%;
     min-height: 100vh;
-    margin: 0;
+    overflow-x: hidden; /* This is crucial to prevent horizontal scroll */
     background-color: rgb(220, 235, 245);
     background-image: url(/images/seamless-pizza-ingredients_1176-269.avif);
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 
-#container{
-    flex: 1;
-    width: 100%;
-    height: 100%;
+#container {
+flex: 1;
+width: 100%;
+height: 100%;
 }
 
-#navbar{
-    width: 100%;
-    height: 65px;
-    box-shadow: 0px 13px 20px 0px rgba(23, 26, 39, 0.10);
-    background-color: gray;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0px;
-    z-index: 100;
+/* Enhanced Responsive Navbar */
+#navbar {
+width: 100%;
+height: 65px;
+box-shadow: 0px 13px 20px 0px rgba(23, 26, 39, 0.10);
+background: #535353;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0px;
+z-index: 100;
 }
 
-
-#list{
-    width: 50%;
-    padding-right: 150px;
+#Logo {
+flex-shrink: 0;
 }
 
-
-#list ul{    /*whole list */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
+#Logo h1 {
+margin: 0;
+font-family: "Edu NSW ACT Hand Pre", cursive;
+font-weight: 700;
+color: rgb(222, 212, 193);
+font-size: 1.8rem;
 }
 
-
-#list ul li a{   /* items*/
-    font-size: large;
-    text-decoration: none;
-    color: #000;
-    
-}
-#list ul li a:hover{   /* items*/
-    color: white;
-    
+#list {
+display: flex;
+align-items: center;
+position: relative;
 }
 
-#profile{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#list ul {
+display: flex;
+justify-content: center;
+align-items: center;
+list-style: none;
+margin: 0;
+padding: 0;
+gap: 1rem;
+}
+
+#list ul li a {
+font-size: 1.1rem;
+text-decoration: none;
+color: #000;
+padding: 6px 12px;
+border: 2px solid black;
+border-radius: 20px;
+transition: all 0.3s ease;
+display: block;
+white-space: nowrap;
+}
+
+#list ul li a:hover {
+color: white;
+background-color: black;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#user_logout {
+display: flex;
+align-items: center;
+gap: 1rem;
+flex-shrink: 0;
+margin-right: 2rem;
+}
+
+#profile {
+display: flex;
+align-items: center;
+gap: 0.5rem;
 }
 
 #profile p {
-    font-size: large;
-    margin-left: 5px;
-    color: #000;
-}
-#Logo{
-    width: 17%;
-    padding-left: 15px;
+font-size: 1rem;
+margin: 0;
+color: #000;
+white-space: nowrap;
 }
 
-#Logout{
-    padding-right: 30px;
-}
-#Logout a{
-    font-size: large;
-    color: #000;
+#profile i {
+font-size: 1.2rem;
 }
 
-#Logout a:hover{
-    color: white;
+#Logout a {
+font-size: 1.2rem;
+color: #000;
+transition: color 0.3s ease;
 }
 
-#user_logout{
-    width: 17%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#Logout a:hover {
+color: white;
 }
 
-/* Mobile responsive adjustments */
+/* Mobile menu button */
+.mobile-menu-btn {
+display: none;
+background: none;
+border: none;
+font-size: 1.5rem;
+color: black;
+cursor: pointer;
+padding: 5px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+#list ul {
+    gap: 0.5rem;
+}
+
+#list ul li a {
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
+#Logo h1 {
+    font-size: 1.6rem;
+}
+}
+
+@media (max-width: 1000px) {
+#list ul li a {
+    padding: 4px 8px;
+    font-size: 0.95rem;
+}
+
+#profile p {
+    font-size: 0.9rem;
+}
+}
+
+@media (max-width: 900px) {
+#navbar {
+    padding: 0 0.5rem;
+}
+
+#list ul {
+    gap: 0.3rem;
+}
+
+#list ul li a {
+    padding: 4px 6px;
+    font-size: 0.9rem;
+}
+
+#Logo h1 {
+    font-size: 1.4rem;
+}
+}
+
 @media (max-width: 768px) {
-    #navbar {
-        height: auto;
-        min-height: 10%;
-        flex-direction: column;
-        padding: 10px 0;
-    }
-    
-    #Logo {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
-    
-    #list {
-        width: 100%;
-        padding: 10px 0;
-        padding-right: 0;
-    }
-    
-    #list ul {
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 0;
-    }
-    
-    #user_logout {
-        width: 100%;
-        justify-content: center;
-        padding: 10px 0;
-    }
-    
-    #Logout {
-        padding-right: 0;
-        padding-left: 20px;
-    }
+#navbar {
+    height: auto;
+    min-height: 65px;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+#Logo {
+    order: 1;
+}
+
+#Logo h1 {
+    font-size: 1.5rem;
+}
+
+.mobile-menu-btn {
+    display: block;
+    order: 2;
+    margin-left: auto;
+}
+
+#user_logout {
+    order: 3;
+    margin-left: 1rem;
+    margin-right: 3rem;
+}
+
+#list {
+    order: 4;
+    width: 100%;
+    margin-top: 1rem;
+    display: none;
+}
+
+#list.active {
+    display: block;
+}
+
+#list ul {
+    width: 80%;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    padding-right: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+#list ul li {
+    width: 100%;
+}
+
+#list ul li a {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+#profile p {
+    display: none; /* Hide username text on mobile */
+}
 }
 
 @media (max-width: 480px) {
-    #list ul {
-        flex-direction: column;
-        gap: 15px;
-        padding: 0;
-    }
-    
+#navbar {
+    padding: 0.75rem;
 }
 
-@media(max-width: 640px){
-    #Healthy{
-        font-size: smaller;
-    }
+#Logo h1 {
+    font-size: 1.2rem;
 }
 
-
-@media(max-width: 498px){
-    #Healthy{
-        font-size: x-small;
-    }
+#user_logout {
+    gap: 0.5rem;
 }
 
+#profile i {
+    font-size: 1rem;
+}
+
+#Logout a {
+    font-size: 1rem;
+}
+}
+
+@media(max-width: 640px) {
+#Healthy {
+    font-size: smaller;
+}
+}
+
+@media(max-width: 498px) {
+#Healthy {
+    font-size: x-small;
+}
+}
 
 /**********************************************************************/
-
-#content{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+#content {
+width: 100%;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+gap: 1rem;
+padding: 1rem;
 }
-
-
-
 
 /*Calorie Card------------------------------------------------------------------------------------------------ */
-
-#Calories{
-    width: 300px;
-    height: 240px;
-    margin-top: 40px;
-    margin-left: 15px;
-    background-color: whitesmoke;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+#Calories {
+width: 300px;
+height: 240px;
+margin-top: 40px;
+background-color: whitesmoke;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
 }
 
-#log_totalcal{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#log_totalcal {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-
-#logo_cal{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    padding-bottom: 10px;
+#logo_cal {
+width: 100%;
+display: flex;
+align-items: center;
+padding-left: 10px;
+padding-bottom: 10px;
 }
 
-#total_cal{
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#total_cal {
+width: 40%;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
-
-#cal_title{
-    padding-left: 5px;
+#cal_title {
+padding-left: 5px;
 }
 
 /**********************************************************************************************************************************
 Progress bar
 */
-
 .progress-container {
-  width: 90%;
-  background-color: #e0e0e0;
-  border-radius: 15px;
-  height: 30px;
-  margin-left: 10px;
+width: 90%;
+background-color: #e0e0e0;
+border-radius: 15px;
+height: 30px;
+margin-left: 10px;
 }
 
 .progress-bar-fill {
-  height: 100%;
-  width: 48%; /* Start at 0, update with JS */
-  background-color: #4CAF50;
-  border-radius: 15px;
-  text-align: center; /* You can easily add text inside */
-  line-height: 30px;
-  color: white;
-  transition: width 0.8s ease-in-out;
-  position: relative;
-  bottom: 50px;
+height: 100%;
+width: 48%; /* Start at 0, update with JS */
+background-color: #4CAF50;
+border-radius: 15px;
+text-align: center; /* You can easily add text inside */
+line-height: 30px;
+color: white;
+transition: width 0.8s ease-in-out;
+position: relative;
+bottom: 50px;
 }
 
-#current_cal_container{
-    padding-left: 10px;
-    padding-bottom: 30px;
+#current_cal_container {
+padding-left: 10px;
+padding-bottom: 30px;
 }
 
-#current_cal{
-    font-size: large;
+#current_cal {
+font-size: large;
 }
-#boundry{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    bottom: 35px;
+
+#boundry {
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+bottom: 35px;
 }
 
 /**********************************************************************************************************************************/
 /*Carb , Protein , Fat*/
-
-
-#carb_pro_fat{
-   width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-
+#carb_pro_fat {
+width: 100%;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+gap: 1rem;
+padding: 1rem;
 }
 
-#carbs , #protein , #fats{
-    width: 300px;
-    height: 240px;
-    margin-top: 40px;
-    margin-left: 15px;
-    background-color: whitesmoke;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+#carbs, #protein, #fats {
+width: 300px;
+height: 240px;
+margin-top: 40px;
+background-color: whitesmoke;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
 }
+
 /*****************************************************************************************************/
 /*Weight*/
-#weight_water{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+#weight_water {
+width: 100%;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+gap: 1rem;
+padding: 1rem;
 }
 
-#weight , #water{
-    width: 300px;
-    height: 240px;
-    margin-top: 40px;
-    margin-left: 15px;
-    background-color: whitesmoke;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+#weight, #water {
+width: 300px;
+height: 240px;
+margin-top: 40px;
+background-color: whitesmoke;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
 }
-#current_weight{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+#current_weight {
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
+
 /*************************************************************************************************************
 Meal Container*/
-
-#mealcontainer{
-    width: 100%;
+#mealcontainer {
+width: 100%;
+padding: 1rem;
 }
 
-#Meal_cards{
-    display: flex;
+#Meal_cards {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
 }
 
-#meal_title{
-    margin-top: 150px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    border-bottom: grey solid;
-    background-color: whitesmoke;
-    border-radius: 15px;
-    letter-spacing: 3px;
-    margin-bottom: 40px;
-    padding: 5px;
-    font-family: "Edu NSW ACT Hand Pre", cursive;
+#meal_title {
+margin-top: 150px;
+width: fit-content;
+margin-left: auto;
+margin-right: auto;
+border-bottom: grey solid;
+background-color: whitesmoke;
+border-radius: 15px;
+letter-spacing: 3px;
+margin-bottom: 40px;
+padding: 5px;
+font-family: "Edu NSW ACT Hand Pre", cursive;
 }
 
-.card{
-    width: 200px;
-    height: 380px;
-    border-radius: 10px;
-    background-color: whitesmoke;
-    margin-left: 15px;
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+.card {
+width: 200px;
+height: 380px;
+border-radius: 10px;
+background-color: whitesmoke;
+box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.meal_img img{
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.meal_img img {
+width: 100%;
+height: 100%;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
 }
 
 .meal_img {
-    width: 100%;
-    height: 30%;
+width: 100%;
+height: 30%;
 }
 
-.meal_details{
-    width: 100%;
-    height: 70%;
-    padding-left: 10px;
-    display: flex;
-    flex-direction: column;
+.meal_details {
+width: 100%;
+height: 70%;
+padding-left: 10px;
+display: flex;
+flex-direction: column;
 }
 
-.name_done{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.name_done {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 
-.meal_name i{
-    margin-right: 10px;
+.meal_name i {
+margin-right: 10px;
 }
 
-.is_eaten_container{
+.is_eaten_container {
 width: 40%;
 }
 
-.is_eaten:checked + label{
-    color: #4CAF50;
+.is_eaten:checked + label {
+color: #4CAF50;
 }
 
 .is_eaten:checked {
-    display: none;
+display: none;
 }
 
-#add_meal{
-    width: 200px;
-    height: 380px;
-    background-color: rgba(245, 245, 245, 0.350);
-    margin-left: 15px;
-    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#add_meal {
+width: 200px;
+height: 380px;
+background-color: rgba(245, 245, 245, 0.350);
+box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-#plus{
-    color: white;
-    font-size: xx-large; 
-    background-color: #2b292a;
-    padding: 4px;
-    border-radius: 20px;
+#plus {
+color: white;
+font-size: xx-large;
+background-color: #2b292a;
+padding: 4px;
+border-radius: 20px;
 }
 
-#plus:hover{
-
-    background-color: #4338ca;
+#plus:hover {
+background-color: #4338ca;
 }
 
 /**************************************************************************************************************/
 /*Footer*/
-
-#footInfo{
+/* Footer */
+#footInfo {
     width: 100%;
-    background-color: gray;
+    background-color: #535353;
+    color: white;
     margin-top: 100px;
     display: flex;
-    align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 1rem;
 }
 
-.foot_divs{
-    width: 200px;
-    height: 360px;
-    background-color: whitesmoke;
-    margin-left: 15px;
+.footer_divs {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 1rem;
+    text-align: center;
 }
 
-h4{
-    color: whitesmoke;
+.footer_divs h4 {
+    color: #f2f2f2;
+    border-bottom: 1px solid #363535;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
-.foot_list{
+
+.foot_list {
     list-style: none;
     padding: 0;
 }
 
-.foot_list a{
-    text-decoration: none;
-    color: black;
+.foot_list li {
+    margin-bottom: 10px;
 }
 
+.foot_list a {
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
 
-.foot_list li{
-    margin-bottom: 15px;
+.foot_list a:hover {
+    color: white;
+}
+
+/* Mobile responsive for content cards */
+@media (max-width: 768px) {
+#carb_pro_fat, #weight_water {
+    flex-direction: column;
+    align-items: center;
+}
+
+#carbs, #protein, #fats, #weight, #water, #Calories {
+    width: 90%;
+    max-width: 350px;
+    margin: 10px 0;
+}
+
+#Meal_cards {
+    flex-direction: column;
+    align-items: center;
+}
+
+.card, #add_meal {
+    width: 90%;
+    max-width: 300px;
+    margin: 10px 0;
+}
+
+#footInfo {
+    flex-direction: column;
+    text-align: center;
+}
+
+.foot_divs {
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
 }

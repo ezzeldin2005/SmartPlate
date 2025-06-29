@@ -13,60 +13,54 @@
 <body>
     
     <div id="top">
-
         <div id="logo">
-         <h1>SmartPlate</h1>
+            <h1>SmartPlate</h1>
         </div>
-
         <div id="listbox">
             <ul id="list">
                 <li><a id="about" href="/About.html">About</a></li>
                 <li><a id="Logintop" href="Login.html">Login</a></li>
-                <li><a  id="signuptop" href="Signup.html">Signup</a></li>
+                <li><a id="signuptop" href="Signup.html">Signup</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-
     </div>
-
+    
     <div id="container">
         <div id="welcome" class="logbox">
             <p id="welmsg">
-                Every meal is a step toward your goals. Let’s log it!
+                Every meal is a step toward your goals. Let's log it!
             </p>
         </div>
         <div id="login" class="logbox">
-
-            <h1 id="loglabel">Login</h1>
-            <p id="welback" style="color: dimgray;"><small>Welcome back! Please enter your details</small></p>
-
+            <div id="log_welback">
+                <h1 id="loglabel">Login</h1>
+                <p id="welback" style="color: dimgray;"><small>Welcome back! Please enter your details</small></p>
+            </div>
             <div id="input">
-
-                <form id="form" action="">
-
+                <form id="form" method="get">
                     <div id="emailbox">
                         <i class="fa-solid fa-envelope"></i>
                         <label for="logemail">Email</label>
                         <input type="email" id="logemail" class="inp" required>
                     </div>
-
                     <div id="passwordbox">
                         <i class="fa-solid fa-key"></i>
                         <label for="logpass">Password</label>
-                        <input type="password" id="logpass"  class="inp" required min="8">
+                        <input type="password" id="logpass" class="inp" required min="8">
                     </div>
-
+                    <p id="msg"></p>
                     <div id="Loginbtnbox">
-                        <button  id="Loginbtn" type="submit">Login</button>
+                        <button id="Loginbtn" type="submit">Login</button>
                     </div>
-
                 </form>
-
-                <P id="newhere" style="color: dimgray;">New here? Join our family <a style="text-decoration: none;color: black;" href="Signup.html">Signup</a></P>
-
-                </div>
+                <p id="newhere" style="color: dimgray;">New here? Join our family <a style="text-decoration: none;color: black;" href="Signup.html">Signup</a></p>
             </div>
+        </div>
     </div>
-
+    <script src="/JS/login.js"></script>
     <script src="/JS/top.js"></script>
 </body>
 </html>

@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (currentPath.includes("Login.html")) {
         if (logintop) {
             logintop.style.backgroundColor = "#000000";
-            logintop.style.padding = "6px";
-            logintop.style.borderRadius = "6px";
+            logintop.style.padding = "8px , 16px";
+            logintop.style.borderRadius = "20px";
             logintop.style.color = "white"; // Optional: to make the text visible
         }
     } 
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
         {
         if (signuptop) {
             signuptop.style.backgroundColor = "#000000";
-            signuptop.style.padding = "6px";
-            signuptop.style.borderRadius = "6px";
+            signuptop.style.padding = "8px , 16px";
+            signuptop.style.borderRadius = "20px";
             signuptop.style.color = "white";
         }
     }
@@ -30,39 +30,39 @@ document.addEventListener("DOMContentLoaded", function() {
     else if (currentPath.includes("About.html")) {
         if (about) {
             about.style.backgroundColor = "#000000";
-            about.style.padding = "6px";
-            about.style.borderRadius = "6px";
+            about.style.padding = "8px , 16px";
+            about.style.borderRadius = "20px";
             about.style.color = "white";
         }
     }
     else if (currentPath.includes("userHome.html")) {
         if (home) {
             home.style.backgroundColor = "#000000";
-            home.style.padding = "6px";
-            home.style.borderRadius = "6px";
+            home.style.padding = "8px , 16px";
+            home.style.borderRadius = "20px";
             home.style.color = "white";
         }
     }
     else if (currentPath.includes("calculator.html")) {
         if (calculator) {
             calculator.style.backgroundColor = "#000000";
-            calculator.style.padding = "6px";
-            calculator.style.borderRadius = "6px";
+            calculator.style.padding = "8px , 16px";
+            calculator.style.borderRadius = "20px";
             calculator.style.color = "white";
         }
     }
     else if (currentPath.includes("search.html")) {
         if (search) {
             search.style.backgroundColor = "#000000";
-            search.style.padding = "6px";
-            search.style.borderRadius = "6px";
+            search.style.padding = "8px , 16px";
+            search.style.borderRadius = "20px";
             search.style.color = "white";
         }
     }
     else if (currentPath.includes("profile.html")) {
         if (profile) {
             profile.style.backgroundColor = "#000000";
-            profile.style.padding = "6px";
+            profile.style.padding = "8px , 16px";
             profile.style.borderRadius = "6px";
             profile.style.color = "white";
         }
