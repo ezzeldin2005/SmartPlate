@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPlate Signup</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/signup.css' %}">
+</head>
+<body>
+   <div id="top">
+        <div id="logo">
+            <h1>SmartPlate</h1>
+        </div>
+        <div id="listbox">
+            <ul id="list">
+                <li><a id="about" href="{% url 'about' %}" >About</a></li>
+                <li><a id="Logintop" href="{% url 'login' %}">Login</a></li>
+                <li><a id="signuptop" href = "{% url 'signup' %}">Signup</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div id="container">
+        <div id="welcome" class="signbox">
+            <p id="welmsg">
+                New here? Join us to track, analyze, and eat smarter!
+            </p>
+        </div>
+        
+        <div id="Signup" class="signbox">
+            <h1 id="signuplable">Signup</h1>
+            <p id="welback"><small>Welcome back! Please enter your details</small></p>
+            
+            <div id="input">
+                <form id="form" action="" method="post">
+                    <div id="namebox"> 
+                        <i id="icon" class="fa-solid fa-user"></i>
+                        <label for="name">Name</label>
+                        <input id="name" class="inputclass" type="text" required>
+                    </div>
+                    <div id="emailbox"> 
+                        <i id="icon" class="fa-solid fa-envelope"></i>
+                        <label for="email">Email</label>
+                        <input id="email" class="inputclass" type="email" required>
+                    </div>
+                    <div id="passwordbox"> 
+                        <i id="icon" class="fa-solid fa-key"></i>
+                        <label for="password">Password</label>
+                        <input id="password" class="inputclass" type="password" required min="8" placeholder="Minimum 8 chars">
+                    </div>
+                    <div id="cpasswordbox"> 
+                        <i id="icon" class="fa-solid fa-key"></i>
+                        <label for="cpassword">Confirm Password</label>
+                        <input id="cpassword" class="inputclass" type="password" required min="8">
+                    </div>
+                    
+                    <p id="msg"></p>
+                    
+                    <div id="signbtnbox">
+                        <button type="submit" id="signupbtn">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'JS/signip.js' %}"></script>
+    <script src='{% static 'JS/top.js' %}'></script>
+</body>
+</html>

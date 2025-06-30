@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPlate Login</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="top">
+        <div id="logo">
+            <h1>SmartPlate</h1>
+        </div>
+        <div id="listbox">
+            <ul id="list">
+                <li><a id="about" href="{% url 'about' %}" >About</a></li>
+                <li><a id="Logintop" href="{% url 'login' %}">Login</a></li>
+                <li><a id="signuptop" href = "{% url 'signup' %}">Signup</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div id="container">
+        <div id="welcome" class="logbox">
+            <p id="welmsg">
+                Every meal is a step toward your goals. Let's log it!
+            </p>
+        </div>
+        <div id="login" class="logbox">
+            <div id="log_welback">
+                <h1 id="loglabel">Login</h1>
+                <p id="welback" style="color: dimgray;"><small>Welcome back! Please enter your details</small></p>
+            </div>
+            <div id="input">
+                <form id="form" method="post">
+                    <div id="emailbox">
+                        <i class="fa-solid fa-envelope"></i>
+                        <label for="logemail">Email</label>
+                        <input type="email" id="logemail" class="inp" required>
+                    </div>
+                    <div id="passwordbox">
+                        <i class="fa-solid fa-key"></i>
+                        <label for="logpass">Password</label>
+                        <input type="password" id="logpass" class="inp" required min="8">
+                    </div>
+                    <p id="msg"></p>
+                    <div id="Loginbtnbox">
+                        <button id="Loginbtn" type="submit">Login</button>
+                    </div>
+                </form>
+                <p id="newhere" style="color: dimgray;">New here? Join our family <a style="text-decoration: none;color: black;" href = "{% url 'signup' %}">Signup</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'JS/login.js' %}"></script>
+    <script src='{% static 'JS/top.js' %}'></script>
+</body>
+</html>
