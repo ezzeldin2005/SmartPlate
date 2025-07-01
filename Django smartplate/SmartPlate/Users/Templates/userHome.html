@@ -108,108 +108,64 @@
         
         {% if nutrition_data %}
     <section id="content">
-        <div id="carb_pro_fat">
-            <div id="carbs">
-                <div id="log_totalcal">
-                    <div id="logo_cal">
-                        <i class="fa-solid fa-bowl-rice"></i>
-                        <p id="cal_title"><b>Carbs</b></p>
-                    </div>
-                    <div id="total_cal">
-                        <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>{{ nutrition_data.goal_carbs|floatformat:0 }}</b><sub>Gram</sub></p>
-                        <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
-                    </div>
-                </div>
-                <div id="progress">
-                    <div id="current_cal_container">
-                        <p id="current_cal"><b>{{ nutrition_data.total_carbs|floatformat:0 }}</b> <sub style="color: gray;">/Gram</sub></p>
-                    </div>
-                    <div class="progress-container">
-                        <div id="boundry">
-                            <p id="strt">0</p>
-                            <p id="end">{{ nutrition_data.goal_carbs|floatformat:0 }}</p>
-                        </div>
-                        <div class="progress-bar-fill" id="custom-progress"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="protein">
-                <div id="log_totalcal">
-                    <div id="logo_cal">
-                        <i class="fa-solid fa-drumstick-bite"></i>
-                        <p id="cal_title"><b>Protein</b></p>
-                    </div>
-                    <div id="total_cal">
-                        <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>{{ nutrition_data.goal_protein|floatformat:0 }}</b><sub>Gram</sub></p>
-                        <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
-                    </div>
-                </div>
-                <div id="progress">
-                    <div id="current_cal_container">
-                        <p id="current_cal"><b>{{ nutrition_data.total_protein|floatformat:0 }}</b> <sub style="color: gray;">/Gram</sub></p>
-                    </div>
-                    <div class="progress-container">
-                        <div id="boundry">
-                            <p id="strt">0</p>
-                            <p id="end">{{ nutrition_data.goal_protein|floatformat:0 }}</p>
-                        </div>
-                        <div class="progress-bar-fill" id="custom-progress"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="fats">
-                <div id="log_totalcal">
-                    <div id="logo_cal">
-                        <img style="width: 20px; height: 20px;" src="{% static 'images/download-removebg-preview.png' %}" alt="">
-                        <p id="cal_title"><b>Fats</b></p>
-                    </div>
-                    <div id="total_cal">
-                        <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>{{ nutrition_data.goal_fat|floatformat:0 }}</b><sub>Gram</sub></p>
-                        <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
-                    </div>
-                </div>
-                <div id="progress">
-                    <div id="current_cal_container">
-                        <p id="current_cal"><b>{{ nutrition_data.total_fat|floatformat:0 }}</b> <sub style="color: gray;">/Gram</sub></p>
-                    </div>
-                    <div class="progress-container">
-                        <div id="boundry">
-                            <p id="strt">0</p>
-                            <p id="end">{{ nutrition_data.goal_fat|floatformat:0 }}</p>
-                        </div>
-                        <div class="progress-bar-fill" id="custom-progress"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="weight_water">
-        <div id="Calories">
+    <div id="carb_pro_fat">
+        <div id="carbs">
             <div id="log_totalcal">
-                <div id="logo_cal">
-                    <i id="logo" class="fa-solid fa-fire"></i>
-                    <p id="cal_title"><b>Calories</b></p>
-                </div>
-                <div id="total_cal">
-                    <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>{{ nutrition_data.goal_calories|floatformat:0 }}</b><sub>Cal</sub></p>
-                    <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
-                </div>
+                <div id="logo_cal"><i class="fa-solid fa-bowl-rice"></i><p id="cal_title"><b>Carbs</b></p></div>
+                <div id="total_cal"><p><b>{{ nutrition_data.goal_carbs|floatformat:0 }}</b><sub>Gram</sub></p><p><small>Daily dose</small></p></div>
             </div>
             <div id="progress">
-                <div id="current_cal_container">
-                    <p id="current_cal"><b>{{ nutrition_data.total_calories|floatformat:0 }}</b> <sub style="color: gray;">/Cal</sub></p>
-                </div>
+                <div id="current_cal_container"><p id="carbs-current-total"><b>{{ nutrition_data.total_carbs|floatformat:0 }}</b> <sub>/Gram</sub></p></div>
                 <div class="progress-container">
-                    <div id="boundry">
-                        <p id="strt">0</p>
-                        <p id="end">{{ nutrition_data.goal_calories|floatformat:0 }}</p>
-                    </div>
-                    <div class="progress-bar-fill" id="custom-progress"></div>
+                    <div id="boundry"><p id="strt">0</p><p id="end">{{ nutrition_data.goal_carbs|floatformat:0 }}</p></div>
+                    <div class="progress-bar-fill" id="carbs-progress-fill"></div>
                 </div>
             </div>
         </div>
-        <div id="weight">
+        <div id="protein">
+            <div id="log_totalcal">
+                <div id="logo_cal"><i class="fa-solid fa-drumstick-bite"></i><p id="cal_title"><b>Protein</b></p></div>
+                <div id="total_cal"><p><b>{{ nutrition_data.goal_protein|floatformat:0 }}</b><sub>Gram</sub></p><p><small>Daily dose</small></p></div>
+            </div>
+            <div id="progress">
+                <div id="current_cal_container"><p id="protein-current-total"><b>{{ nutrition_data.total_protein|floatformat:0 }}</b> <sub>/Gram</sub></p></div>
+                <div class="progress-container">
+                    <div id="boundry"><p id="strt">0</p><p id="end">{{ nutrition_data.goal_protein|floatformat:0 }}</p></div>
+                    <div class="progress-bar-fill" id="protein-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        <div id="fats">
+            <div id="log_totalcal">
+                <div id="logo_cal"><img style="width: 20px; height: 20px;" src="{% static 'images/download-removebg-preview.png' %}" alt=""><p id="cal_title"><b>Fats</b></p></div>
+                <div id="total_cal"><p><b>{{ nutrition_data.goal_fat|floatformat:0 }}</b><sub>Gram</sub></p><p><small>Daily dose</small></p></div>
+            </div>
+            <div id="progress">
+                <div id="current_cal_container"><p id="fat-current-total"><b>{{ nutrition_data.total_fat|floatformat:0 }}</b> <sub>/Gram</sub></p></div>
+                <div class="progress-container">
+                    <div id="boundry"><p id="strt">0</p><p id="end">{{ nutrition_data.goal_fat|floatformat:0 }}</p></div>
+                    <div class="progress-bar-fill" id="fat-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="weight_water">
+    <div id="Calories">
+        <div id="log_totalcal">
+            <div id="logo_cal"><i id="logo" class="fa-solid fa-fire"></i><p id="cal_title"><b>Calories</b></p></div>
+            <div id="total_cal"><p><b>{{ nutrition_data.goal_calories|floatformat:0 }}</b><sub>Cal</sub></p><p><small>Daily dose</small></p></div>
+        </div>
+        <div id="progress">
+            <div id="current_cal_container"><p id="calories-current-total"><b>{{ nutrition_data.total_calories|floatformat:0 }}</b> <sub>/Cal</sub></p></div>
+            <div class="progress-container">
+                <div id="boundry"><p id="strt">0</p><p id="end">{{ nutrition_data.goal_calories|floatformat:0 }}</p></div>
+                <div class="progress-bar-fill" id="calories-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+    <div id="weight">
             <div id="log_totalcal">
                 <div id="logo_cal">
                     <i class="fa-solid fa-weight-scale"></i>
@@ -225,31 +181,20 @@
                 <p id="Healthy">Healthy weight is {{ healthy_weight_range }}</p>
             </div>
         </div>
-        <div id="water">
-            <div id="log_totalcal">
-                <div id="logo_cal">
-                    <i class="fa-solid fa-glass-water"></i>
-                    <p id="cal_title"><b>Water</b></p>
-                </div>
-                <div id="total_cal">
-                    <p style="margin-bottom: 0;margin-top: 20px; padding-top: 10px;"><b>{{ nutrition_data.goal_water|floatformat:1 }}</b><sub>Liter</sub></p>
-                    <p style="margin-top: 0;color: gray;"><small>Daily dose</small></p>
-                </div>
-            </div>
-            <div id="progress">
-                <div id="current_cal_container">
-                    <p id="current_cal"><b>{{ nutrition_data.total_water|floatformat:1 }}</b> <sub style="color: gray;">/Liter</sub></p>
-                </div>
-                <div class="progress-container">
-                    <div id="boundry">
-                        <p id="strt">0</p>
-                        <p id="end">{{ nutrition_data.goal_water|floatformat:1 }}</p>
-                    </div>
-                    <div class="progress-bar-fill" id="custom-progress"></div>
-                </div>
+    <div id="water">
+        <div id="log_totalcal">
+            <div id="logo_cal"><i class="fa-solid fa-glass-water"></i><p id="cal_title"><b>Water</b></p></div>
+            <div id="total_cal"><p><b>{{ nutrition_data.goal_water|floatformat:1 }}</b><sub>Liter</sub></p><p><small>Daily dose</small></p></div>
+        </div>
+        <div id="progress">
+            <div id="current_cal_container"><p id="water-current-total"><b>{{ nutrition_data.total_water|floatformat:1 }}</b> <sub>/Liter</sub></p></div>
+            <div class="progress-container">
+                <div id="boundry"><p id="strt">0</p><p id="end">{{ nutrition_data.goal_water|floatformat:1 }}</p></div>
+                <div class="progress-bar-fill" id="water-progress-fill"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     {% else %}
     <div style="text-align: center; padding: 50px;">
@@ -263,37 +208,58 @@
                 <h1>MEAL CARDS</h1>
             </div>
             <div id="Meal_cards">
-                <div class="card">
+
+                {% for meal in custom_meals %}
+                <div class="card meal-card {% if meal.id in eaten_today_ids %}eaten{% endif %}"
+
+                     data-meal-id="{{ meal.id }}"
+                     data-calories="{{ meal.calories }}"
+                     data-protein="{{ meal.protein }}"
+                     data-carbs="{{ meal.carbs }}"
+                     data-fats="{{ meal.fats }}"
+                     data-water="{{ meal.water }}">
+
                     <div class="meal_img">
-                        <img src="{% static 'images/pizaa.jpeg' %}" alt="">
+                        {% if meal.image %}
+                            <img src="{{ meal.image.url }}" alt="{{ meal.name }}">
+                        {% else %}
+                            <img src="{% static 'images/default-meal.png' %}" alt="Default meal image">
+                        {% endif %}
                     </div>
+
+
                     <div class="meal_details">
                         <div class="name_done">
-                            <p class="meal_name"><i class="fa-solid fa-utensils"></i><b>Pizza Diet</b></p>
+                            <p class="meal_name"><i class="fa-solid fa-utensils"></i><b>{{ meal.name }}</b></p>
                             <div class="is_eaten_container">
-                                <input class="is_eaten" type="checkbox">
-                                <label for="is_eaten">Done</label>
+                                <button class="done-btn" {% if meal.id in eaten_today_ids %}disabled{% endif %}>{% if meal.id in eaten_today_ids %}Logged{% else %}Done{% endif %}</button>
                             </div>
                         </div>
                         <div class="meal_cal">
-                            <p>Calories: 600 <sub>Cal</sub></p>
+                            <p>Calories: {{ meal.calories|floatformat:0 }} <sub>Cal</sub></p>
                         </div>
                         <div class="meal_pro">
-                            <p>Protein: 100 <sub>gm</sub></p>
+                            <p>Protein: {{ meal.protein|floatformat:0 }} <sub>gm</sub></p>
                         </div>
                         <div class="meal_fat">
-                            <p>Fats: 300 <sub>gm</sub></p>
+                            <p>Fats: {{ meal.fats|floatformat:0 }} <sub>gm</sub></p>
                         </div>
                         <div class="meal_car">
-                            <p>Carbs: 200 <sub>gm</sub></p>
+                            <p>Carbs: {{ meal.carbs|floatformat:0 }} <sub>gm</sub></p>
+                        </div>
+                        <div class="meal_water">
+                            <p>Water: {{ meal.water|floatformat:0 }} <sub>mL</sub></p>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+
                 <div id="add_meal" class="card">
                     <a id="plus" href="{% url 'add_meal' %}"><i class="fa-solid fa-plus"></i></a>
                 </div>
             </div>
         </section>
+
 
         
         <footer id="footInfo">
@@ -331,6 +297,30 @@
             </div>
         </footer>
     </div>
+
+
+     <script>
+    const logMealUrl = "{% url 'log_meal' %}";
+    const csrfToken = "{{ csrf_token }}"; // Pass CSRF token for fetch requests
+
+    // Pass initial nutrition data to JavaScript
+    const nutritionGoals = {
+        calories: {{ nutrition_data.goal_calories|default:0 }},
+        protein: {{ nutrition_data.goal_protein|default:0 }},
+        carbs: {{ nutrition_data.goal_carbs|default:0 }},
+        fat: {{ nutrition_data.goal_fat|default:0 }},
+        water: {{ nutrition_data.goal_water|default:0 }}
+    };
+    const nutritionTotals = {
+        calories: {{ nutrition_data.total_calories|default:0 }},
+        protein: {{ nutrition_data.total_protein|default:0 }},
+        carbs: {{ nutrition_data.total_carbs|default:0 }},
+        fat: {{ nutrition_data.total_fat|default:0 }},
+        water: {{ nutrition_data.total_water|default:0 }}
+    };
+</script>
+
+
      <script>
     const saveNutritionDataUrl = "{% url 'save_nutrition_data' %}";
     </script>

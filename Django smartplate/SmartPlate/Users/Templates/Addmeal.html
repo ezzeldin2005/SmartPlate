@@ -1,1 +1,114 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Meal</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/addmeal.css' %}">
+</head>
+<body>
+
+    <div id="container">
+
+        <nav id="navbar">
+            <div id="Logo">
+                <h1>SmartPlate</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div id="list">
+                <ul>
+                    <li><a id="home" href="{% url 'home' %}">Home</a></li>
+                    <li><a id="Calculator" href="{% url 'calculator' %}">Calculator</a></li>
+                    <li><a id="search" href="{% url 'search' %}">Search</a></li>
+                    <li><a id="profilenav" href="{% url 'profile' %}">Profile</a></li>
+                </ul>
+            </div>
+            
+            <div id="user_logout">
+                <div id="profile">
+                    <i class="fa-solid fa-user"></i>
+                    <p>{{ request.session.user_name }}</p>
+                </div>
+                <div id="Logout">
+                    <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                </div>
+            </div>
+            
+        </nav>
+
+
+        <section id="content">
+
+            <h1 id="header">Customize your own meal</h1>
+
+            <div id="meal-content">
+
+                <h3 class="card-title">Meal information</h3>
+
+                <p class="card-description">Plese Enter meal details</p>
+
+                
+                <form id="meal-form" action="{% url 'add_custom_meal' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calories">Calories</label>
+                            <input type="number" id="calories" name="calories" required min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="protein">Protein</label>
+                            <input type="number" id="protein" name="protein" required min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="fats">Fats</label>
+                            <input type="number" id="fats" name="fats" required min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carbs">Carbs</label>
+                            <input type="number" id="carbs" name="carbs" required min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="water">Water</label>
+                            <input type="number" id="water" name="water" required min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload meal image</label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                    </div>
+                    <div id="btn-container">
+                        <button id="btn" type="submit">Add Meal</button>
+                    </div>
+                    <p id="message" style="font-weight: bold"></p>
+                </form>
+            </div>
+
+        </section>
+
+        <footer>
+
+        </footer>
+
+
+    </div>
+
+    <script src="{% static 'JS/addmeal.js' %}"></script>
+</body>
+</html>

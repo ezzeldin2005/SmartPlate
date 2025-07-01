@@ -509,6 +509,32 @@ border-radius: 20px;
 background-color: #4338ca;
 }
 
+/* In your CSS file */
+.meal-card.eaten {
+    opacity: 0.6;
+    border: 2px solid #28a745; /* Green border */
+}
+
+.done-btn {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.done-btn:hover {
+    background-color: #0056b3;
+}
+
+.done-btn:disabled {
+    background-color: #28a745;
+    cursor: not-allowed;
+}
+
 /**************************************************************************************************************/
 /*Footer*/
 /* Footer */
@@ -723,3 +749,5 @@ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
 }
 }
+
+

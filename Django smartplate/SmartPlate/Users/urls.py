@@ -13,5 +13,7 @@ urlpatterns = [
     path('custom-signup/', views.signup_custom, name='custom_signup'),
     path('logout/', views.logout_view, name='logout'),
     path('save-nutrition-data/', views.save_nutrition_data, name='save_nutrition_data'),
+    path('add-custom-meal/', views.add_custom_meal, name='add_custom_meal'),
+    path('log-meal/', views.log_meal, name='log_meal'),
 ]
 

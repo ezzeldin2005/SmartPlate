@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse , JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import loader
-from .models import User,UserNutrition
+from .models import User, UserNutrition, CustomMeal,EatenMeal
+from django.db.models import F # Import F to perform database-level operations
+from django.utils import timezone
 import json
 import math
 
@@ -19,45 +21,51 @@ def Signup(request):
 
 def Home(request):
     user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+
+
+    eaten_today_ids = []
     show_modal = False
     nutrition_data = None
+    healthy_weight_range = ""
+    custom_meals = []  # Initialize as an empty list
 
-    if user_id:
-        try:
-            # Use select_related to efficiently fetch the user data as well
-            nutrition_data = UserNutrition.objects.select_related('user').get(user_id=user_id)
+    try:
+        user = User.objects.get(id=user_id)
+        nutrition_data = UserNutrition.objects.get(user=user)
 
-            # The modal should only show if the user's profile is incomplete
-            if nutrition_data.user.age == 0 or nutrition_data.user.weight == 0 or nutrition_data.user.height == 0:
-                show_modal = True
-            else:
-                # --- Healthy Weight Calculation ---
-                height_in_meters = nutrition_data.user.height / 100
+        # Fetch the user's custom meals
+        custom_meals = CustomMeal.objects.filter(user=user)
 
-                # BMI range for healthy weight
-                lower_bmi = 18.5
-                upper_bmi = 24.9
+        # ✨ GET A LIST OF MEAL IDs EATEN TODAY ✨
+        today = timezone.now().date()
+        eaten_today_ids = EatenMeal.objects.filter(
+            user=user, date_eaten=today
+        ).values_list('meal_id', flat=True)
 
-                # Calculate the weight range
-                lower_bound = lower_bmi * math.pow(height_in_meters, 2)
-                upper_bound = upper_bmi * math.pow(height_in_meters, 2)
-
-                # Create a formatted string for the template
-                healthy_weight_range = f"{lower_bound:.0f} - {upper_bound:.0f} Kg"
-
-        except UserNutrition.DoesNotExist:
-            # If no nutrition profile exists, show the modal to create one
+        if user.age == 0 or user.weight == 0 or user.height == 0:
             show_modal = True
-    else:
-        # If no user is logged in, redirect to login
+        else:
+            height_in_meters = user.height / 100
+            lower_bmi = 18.5
+            upper_bmi = 24.9
+            lower_bound = lower_bmi * math.pow(height_in_meters, 2)
+            upper_bound = upper_bmi * math.pow(height_in_meters, 2)
+            healthy_weight_range = f"{lower_bound:.0f} - {upper_bound:.0f} Kg"
+
+    except (User.DoesNotExist, UserNutrition.DoesNotExist):
+        # This might happen if a user exists but their nutrition profile was somehow deleted
+        # Or if the session user_id is invalid. Redirecting to login is a safe fallback.
         return redirect('login')
 
     template = loader.get_template('userHome.html')
-    # Pass both 'show_modal' and 'nutrition_data' to the template
     context = {
         'show_modal': show_modal,
         'nutrition_data': nutrition_data,
-        'healthy_weight_range': healthy_weight_range
+        'healthy_weight_range': healthy_weight_range,
+        'custom_meals': custom_meals,  # Pass the meals to the template
+        'eaten_today_ids': list(eaten_today_ids),
     }
     return HttpResponse(template.render(context, request))
 
@@ -139,6 +147,8 @@ def signup_custom(request):
                 age=0
             )
 
+            UserNutrition.objects.create(user=user)
+
             request.session['user_id'] = user.id
             request.session['user_name'] = user.username
 
@@ -219,3 +229,87 @@ def save_nutrition_data(request):
 
     return JsonResponse({'status': 'fail', 'message': 'Only POST allowed'})
 
+@csrf_exempt
+def add_custom_meal(request):
+    if request.method == 'POST':
+        try:
+            user_id = request.session.get('user_id')
+            if not user_id:
+                return JsonResponse({'status': 'error', 'message': 'User not authenticated'}, status=401)
+
+            user = User.objects.get(id=user_id)
+
+            # Use request.POST for form data and request.FILES for files
+            custom_meal = CustomMeal(
+                user=user,
+                name=request.POST.get('name'),
+                calories=float(request.POST.get('calories')),
+                protein=float(request.POST.get('protein')),
+                fats=float(request.POST.get('fats')),
+                carbs=float(request.POST.get('carbs')),
+                water=float(request.POST.get('water')),
+                image=request.FILES.get('image')  # Handle the uploaded file
+            )
+            custom_meal.save()
+
+            return JsonResponse({'status': 'success', 'message': 'Meal added successfully!'})
+
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+
+    return JsonResponse({'status': 'fail', 'message': 'Invalid request method'}, status=405)
+
+
+@csrf_exempt
+def log_meal(request):
+    if request.method == 'POST':
+        user_id = request.session.get('user_id')
+        if not user_id:
+            return JsonResponse({'status': 'error', 'message': 'User not authenticated'}, status=401)
+
+        try:
+            data = json.loads(request.body)
+            meal_id = data.get('meal_id')
+
+            user = User.objects.get(id=user_id)
+            meal = CustomMeal.objects.get(id=meal_id, user_id=user_id)
+            nutrition_profile = UserNutrition.objects.get(user_id=user_id)
+            today = timezone.now().date()
+
+            # ✨ CHECK IF THE MEAL WAS ALREADY LOGGED TODAY ✨
+            if EatenMeal.objects.filter(user=user, meal=meal, date_eaten=today).exists():
+                return JsonResponse({'status': 'info', 'message': 'Meal already logged for today.'})
+
+            # Update the user's total intake using F() expressions for safety
+            # F() prevents race conditions and is more efficient
+            nutrition_profile.total_calories = F('total_calories') + meal.calories
+            nutrition_profile.total_protein = F('total_protein') + meal.protein
+            nutrition_profile.total_carbs = F('total_carbs') + meal.carbs
+            nutrition_profile.total_fat = F('total_fat') + meal.fats
+            nutrition_profile.total_water = F('total_water') + (meal.water / 1000)  # Convert mL to Liters
+
+            nutrition_profile.save()
+            # ✨ CREATE THE EatenMeal RECORD ✨
+            EatenMeal.objects.create(user=user, meal=meal, date_eaten=today)
+
+            # Refresh the object from the database to get the updated values
+            nutrition_profile.refresh_from_db()
+
+            # Return the new totals to update the frontend
+            return JsonResponse({
+                'status': 'success',
+                'updated_totals': {
+                    'calories': nutrition_profile.total_calories,
+                    'protein': nutrition_profile.total_protein,
+                    'carbs': nutrition_profile.total_carbs,
+                    'fat': nutrition_profile.total_fat,
+                    'water': nutrition_profile.total_water,
+                }
+            })
+
+        except (CustomMeal.DoesNotExist, UserNutrition.DoesNotExist):
+            return JsonResponse({'status': 'error', 'message': 'Meal or profile not found'}, status=404)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+
+    return JsonResponse({'status': 'fail', 'message': 'Invalid request method'}, status=405)

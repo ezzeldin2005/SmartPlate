@@ -1,0 +1,517 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: rgb(220, 235, 245);
+    background-image: url(../images/seamless-pizza-ingredients_1176-269.avif);
+    font-family: sans-serif;
+}
+
+#container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+/* Enhanced Responsive Navbar */
+#navbar {
+    width: 100%;
+    height: 65px;
+    box-shadow: 0px 13px 20px 0px rgba(23, 26, 39, 0.10);
+    background: #535353;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+}
+
+#Logo {
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+#Logo h1 {
+    margin: 0;
+    font-family: "Edu NSW ACT Hand Pre", cursive;
+    font-weight: 700;
+    color: rgb(222, 212, 193);
+    font-size: 1.8rem;
+}
+
+#list {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#list ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+#list ul li a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #000;
+    padding: 6px 12px;
+    border: 2px solid black;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: block;
+    white-space: nowrap;
+}
+
+#list ul li a:hover {
+    color: white;
+    background-color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#user_logout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    margin-right: 2rem;
+}
+
+#profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#profile p {
+    font-size: 1rem;
+    margin: 0;
+    color: #000;
+    white-space: nowrap;
+}
+
+#profile i {
+    font-size: 1.2rem;
+}
+
+#Logout a {
+    font-size: 1.2rem;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+#Logout a:hover {
+    color: white;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: black;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Content Styles */
+#content {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#header {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#meal-content {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: #1f2937;
+    padding: 2rem 2rem 0;
+}
+
+.card-description {
+    color: #6b7280;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+#meal-form {
+    padding: 0 2rem 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background-color: #ffffff;
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+    background: #4338ca;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+#btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+#btn {
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    min-width: 200px;
+}
+
+#btn:hover {
+    background: linear-gradient(135deg, #4338ca, #6d28d9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+
+#btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #list ul {
+        gap: 0.5rem;
+    }
+
+    #list ul li a {
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+
+    #Logo h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    #list ul li a {
+        padding: 4px 8px;
+        font-size: 0.95rem;
+    }
+
+    #profile p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 900px) {
+    #navbar {
+        padding: 0 0.5rem;
+    }
+
+    #list ul {
+        gap: 0.3rem;
+    }
+
+    #list ul li a {
+        padding: 4px 6px;
+        font-size: 0.9rem;
+    }
+
+    #Logo h1 {
+        font-size: 1.4rem;
+    }
+
+    #meal-content {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        height: auto;
+        min-height: 65px;
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+
+    #Logo {
+        order: 1;
+    }
+
+    #Logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        order: 2;
+        margin-left: auto;
+    }
+
+    #user_logout {
+        order: 3;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #list {
+        order: 4;
+        width: 100%;
+        margin-top: 1rem;
+        display: none;
+    }
+
+    #list.active {
+        display: block;
+    }
+
+    #list ul {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    #list ul li {
+        width: 100%;
+    }
+
+    #list ul li a {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    #profile p {
+        display: none;
+    }
+
+    /* Content responsive styles */
+    #content {
+        padding: 1rem 0.5rem;
+    }
+
+    #header {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #meal-content {
+        margin: 0;
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+        padding: 1.5rem 1rem 0;
+    }
+
+    .card-description {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #meal-form {
+        padding: 0 1rem 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group input {
+        padding: 0.875rem;
+        font-size: 1rem;
+    }
+
+    #btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #navbar {
+        padding: 0.75rem;
+    }
+
+    #Logo {
+        margin-left: 0;
+    }
+
+    #Logo h1 {
+        font-size: 1.2rem;
+    }
+
+    #user_logout {
+        gap: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    #profile i {
+        font-size: 1rem;
+    }
+
+    #Logout a {
+        font-size: 1rem;
+    }
+
+    #header {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    #meal-content {
+        border-radius: 10px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        padding: 1rem 0.75rem 0;
+    }
+
+    .card-description {
+        padding: 0 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    #meal-form {
+        padding: 0 0.75rem 1rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    #btn-container {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    #content {
+        padding: 0.5rem 0.25rem;
+    }
+
+    #meal-content {
+        margin: 0.25rem;
+        width: calc(100% - 0.5rem);
+    }
+
+    .card-title {
+        padding: 0.75rem 0.5rem 0;
+    }
+
+    .card-description {
+        padding: 0 0.5rem;
+    }
+
+    #meal-form {
+        padding: 0 0.5rem 0.75rem;
+    }
+}
