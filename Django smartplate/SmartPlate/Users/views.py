@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.template import loader
 from .models import User,UserNutrition
 import json
+import math
 
 # Create your views here.
 
@@ -29,6 +30,20 @@ def Home(request):
             # The modal should only show if the user's profile is incomplete
             if nutrition_data.user.age == 0 or nutrition_data.user.weight == 0 or nutrition_data.user.height == 0:
                 show_modal = True
+            else:
+                # --- Healthy Weight Calculation ---
+                height_in_meters = nutrition_data.user.height / 100
+
+                # BMI range for healthy weight
+                lower_bmi = 18.5
+                upper_bmi = 24.9
+
+                # Calculate the weight range
+                lower_bound = lower_bmi * math.pow(height_in_meters, 2)
+                upper_bound = upper_bmi * math.pow(height_in_meters, 2)
+
+                # Create a formatted string for the template
+                healthy_weight_range = f"{lower_bound:.0f} - {upper_bound:.0f} Kg"
 
         except UserNutrition.DoesNotExist:
             # If no nutrition profile exists, show the modal to create one
@@ -41,7 +56,8 @@ def Home(request):
     # Pass both 'show_modal' and 'nutrition_data' to the template
     context = {
         'show_modal': show_modal,
-        'nutrition_data': nutrition_data
+        'nutrition_data': nutrition_data,
+        'healthy_weight_range': healthy_weight_range
     }
     return HttpResponse(template.render(context, request))
 

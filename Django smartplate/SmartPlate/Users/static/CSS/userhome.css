@@ -331,7 +331,7 @@ margin-left: 10px;
 
 .progress-bar-fill {
 height: 100%;
-width: 48%; /* Start at 0, update with JS */
+width: 0; /* Start at 0, update with JS */
 background-color: #4CAF50;
 border-radius: 15px;
 text-align: center; /* You can easily add text inside */

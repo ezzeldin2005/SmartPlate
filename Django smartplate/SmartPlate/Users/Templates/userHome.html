@@ -222,7 +222,7 @@
             </div>
             <div id="current_weight">
                 <p style="font-size: x-large;" id="Num_weight"><b>{{ nutrition_data.user.weight|floatformat:1 }}</b><sub style="color: grey;">Kg</sub></p>
-                <p id="Healthy">Healthy weight is 80-90</p>
+                <p id="Healthy">Healthy weight is {{ healthy_weight_range }}</p>
             </div>
         </div>
         <div id="water">
