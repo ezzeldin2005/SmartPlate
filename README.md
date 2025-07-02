@@ -43,6 +43,7 @@ SmartPlate is a comprehensive nutrition and calorie tracking web application des
 - Nutrition API integration (Edamam)
 - Persistent user session management
 - Clean, modern UI with intuitive navigation
+- Macros calculation for a sepecific item and for a full recipe
 
 ## Technical Implementation
 
@@ -63,6 +64,8 @@ SmartPlate is a comprehensive nutrition and calorie tracking web application des
 - Separation of concerns (HTML/CSS/JS)
 - Reusable UI components (cards, forms, navigation)
 
+### Backend
+-Django frame work
 
 
 ## Usage Instructions
@@ -76,18 +79,26 @@ SmartPlate is a comprehensive nutrition and calorie tracking web application des
    - Enter registered email and password
    - Redirects to dashboard upon success
 
-3. **Dashboard**:
+3. **Nutrtion detalis**
+   - Age
+   - Weight
+   - Height
+   - etc.
+
+4. **Dashboard**:
    - View current calorie and nutrient intake
    - Track progress toward goals
    - Log meals and water intake
 
-4. **Calculators**:
+5. **Calculators**:
    - Personal Calculator: Get daily calorie targets
    - Meal Calculator: Calculate calories from macros
 
-5. **Navigation**:
+6. **Navigation**:
    - Use the top navigation bar to access all features
    - Logout from the profile menu
+     
+7.**Meal customization**
 
 ## API Integration
 
@@ -112,9 +123,8 @@ The application integrates with the Edamam Nutrition API to:
 
 ## Future Enhancements
 
-1. Backend integration for data persistence
-2. Expanded food database
-3. Meal planning features
-4. Social sharing capabilities
-5. Advanced analytics and reporting
+1. Expanded food database
+2. Meal planning features
+3. Social sharing capabilities
+4. Advanced analytics and reporting
 
