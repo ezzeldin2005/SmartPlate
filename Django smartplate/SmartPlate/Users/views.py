@@ -80,9 +80,21 @@ def Search(request):
     return render(request, 'search.html')
 
 def Profile(request):
-    if 'user_id' not in request.session:
+    user_id = request.session.get('user_id')
+    if not user_id:
         return redirect('login')
-    return render(request, 'profile.html')
+
+    try:
+        user = User.objects.get(id=user_id)
+        user_nutrition = UserNutrition.objects.get(user=user)
+    except (User.DoesNotExist, UserNutrition.DoesNotExist):
+        return redirect('login')
+
+    context = {
+        'user': user,
+        'user_nutrition': user_nutrition
+    }
+    return render(request, 'profile.html', context)
 
 def Add_meal(request):
     if 'user_id' not in request.session:

@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (profile) {
             profile.style.backgroundColor = "#000000";
             profile.style.padding = "8px , 16px";
-            profile.style.borderRadius = "6px";
+            profile.style.borderRadius = "20px";
             profile.style.color = "white";
         }
     }

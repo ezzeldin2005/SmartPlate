@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/search.css">
+</head>
+<body>
+    <nav id="navbar">
+        <div id="Logo">
+            <h1>SmartPlate</h1>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div id="list">
+            <ul>
+                <li><a id="home" href="/userHome.html">Home</a></li>
+                <li><a id="Calculator" href="/calculator.html">Calculator</a></li>
+                <li><a id="search" href="/search.html">Search</a></li>
+                <li><a id="profilenav" href="/profile.html">Profile</a></li>
+            </ul>
+        </div>
+        
+        <div id="user_logout">
+            <div id="profile">
+                <i class="fa-solid fa-user"></i>
+                <p>Username</p>
+            </div>
+            <div id="Logout">
+                <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+        <div class="header">
+            <h1>Nutrition Search</h1>
+            <p>analyze a full recipe with multiple ingredients at once or analyze a single ingredient line or a simple food query</p>
+        </div>
+
+        <div class="tabs">
+            <div class="tab-list">
+                <button class="tab-button active" onclick="switchTab('single')">
+                    single ingredient search
+                </button>
+                <button class="tab-button" onclick="switchTab('recipe')">
+                    full recipe search
+                </button>
+            </div>
+        </div>
+
+        <div id="single-tab" class="tab-content active">
+            <div id="search_bar">
+                <form id="form" action="" method="get">
+                    <input id="bar" type="text" required placeholder="Ex: 1 large egg or 200gm rice">
+                    <button id="btn" type="submit">Enter</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Ingredient information</h3>
+                    <p class="card-description">Total calories from macronutrients</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="meal-result">
+                        <div class="meal-total" id="meal-total">0</div>
+                        <div class="meal-label">Total Calories</div>
+                    </div>
+                    <div id="macro-breakdown" class="macro-grid">
+                        <div class="macro-card protein">
+                            <div class="macro-name">Protein</div>
+                            <div class="macro-value" id="protein-cal">0 gm</div>
+                        </div>
+                        <div class="macro-card carbs">
+                            <div class="macro-name">Carbs</div>
+                            <div class="macro-value" id="carbs-cal">0 gm</div>
+                        </div>
+                        <div class="macro-card fat">
+                            <div class="macro-name">Fat</div>
+                            <div class="macro-value" id="fat-cal">0 gm</div>
+                        </div>
+                        <div class="macro-card fiber">
+                            <div class="macro-name">Fiber</div>
+                            <div class="macro-value" id="fiber-cal">0 gm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="recipe-tab" class="tab-content">
+            <div class="recipe-search">
+                <form class="recipe-form" action="" method="get">
+                    <textarea class="recipe-textarea" required placeholder="Enter your full recipe here...
+
+Example:
+2 cups all-purpose flour
+1 cup sugar
+1/2 cup butter
+2 large eggs
+1 tsp vanilla extract
+1 cup milk
+2 tsp baking powder
+1/2 tsp salt
+
+Or paste your recipe ingredients list here. Each ingredient should be on a separate line with quantities and measurements."></textarea>
+                </form>
+                <button class="recipe-btn" type="submit">Analyze Recipe</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Recipe Analysis</h3>
+                    <p class="card-description">Complete nutritional breakdown of your recipe</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="meal-result">
+                        <div class="meal-total" id="recipe-total">0</div>
+                        <div class="meal-label">Total Recipe Calories</div>
+                    </div>
+                    <div id="recipe-macro-breakdown" class="macro-grid">
+                        <div class="macro-card carbs">
+                            <div class="macro-name">Carbs</div>
+                            <div class="macro-value" id="recipe-carbs-cal">0 cal</div>
+                        </div>
+                        <div class="macro-card fat">
+                            <div class="macro-name">Fat</div>
+                            <div class="macro-value" id="recipe-fat-cal">0 cal</div>
+                        </div>
+                        <div class="macro-card fiber">
+                            <div class="macro-name">Fiber</div>
+                            <div class="macro-value" id="recipe-fiber-cal">0 cal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footInfo">
+        <div id="links" class="footer_divs">
+            <h4>Quick Links</h4>
+            <ul class="foot_list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div id="company" class="footer_divs">
+            <h4>Company</h4>
+            <ul class="foot_list">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">careers</a></li>
+                <li><a href="#">Press</a></li>
+            </ul>
+        </div>
+        <div id="product" class="footer_divs">
+            <h4>Social</h4>
+            <ul class="foot_list">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instgram</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+        </div>
+        <div id="resources" class="footer_divs">
+            <h4>Resources</h4>
+            <ul class="foot_list">
+                <li><a href="#">Application</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Sytems</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="/JS/top.js"></script>
+    <script src="/JS/search.js"></script>
+    <script src="/JS/API.js"></script>
+</body>
+</html>

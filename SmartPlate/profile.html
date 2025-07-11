@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/profile.css">
+</head>
+<body>
+
+    <nav id="navbar">
+            <div id="Logo">
+                <h1>SmartPlate</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div id="list">
+                <ul>
+                    <li><a id="home" href="/userHome.html">Home</a></li>
+                    <li><a id="Calculator" href="/calculator.html">Calculator</a></li>
+                    <li><a id="search" href="/search.html">Search</a></li>
+                    <li><a id="profilenav" href="/profile.html">Profile</a></li>
+                </ul>
+            </div>
+            
+            <div id="user_logout">
+                <div id="profile">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Username</p>
+                </div>
+                <div id="Logout">
+                    <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                </div>
+            </div>
+            
+        </nav>
+
+    <div id="container">
+        <div id="profile_card">
+            <header id="profile-header">
+
+                <div class="profile-avatar">JA</div>
+                <h1 class="profile-name">John Anderson</h1>
+
+            </header>
+
+            <section id="user_info">
+                
+                <div class="stat-card" id="age">
+                    <span class="stat-value">28</span>
+                    <span class="stat-label">Years Old</span>
+                </div>
+
+                <div class="stat-card" id="weight">
+                    <span class="stat-value">92</span>
+                    <span class="stat-label">Weight (Kg)</span>
+                </div>
+
+                <div class="stat-card" id="height">
+                    <span class="stat-value">180<sub>cm</sub></span>
+                    <span class="stat-label">Height</span>
+                </div>
+
+                <div class="stat-card" id="goal">
+                    <span class="stat-value">Lose 10 lbs</span>
+                    <span class="stat-label">Goal</span>
+                </div>
+                <div class="stat-card" id="activity">
+                    <span class="stat-value">moderate</span>
+                    <span class="stat-label">Activity Level</span>
+                </div>
+
+            </section>
+
+       
+        </div>
+
+            <div id="motiv">
+                <p>Fuel your body, feed your future. Every bite is a step toward a stronger, healthier you.</p>
+            </div>
+
+    </div>
+
+    <script src="/JS/profile.js"></script>
+    <script src="/JS/top.js"></script>
+</body>
+</html>

@@ -1,1 +1,85 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://kit.fontawesome.com/26c4e1b98a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/profile.css' %}">
+</head>
+<body>
+
+    <nav id="navbar">
+            <div id="Logo">
+                <h1>SmartPlate</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div id="list">
+                <ul>
+                    <li><a id="home" href="{% url 'home' %}">Home</a></li>
+                    <li><a id="Calculator" href="{% url 'calculator' %}">Calculator</a></li>
+                    <li><a id="search" href="{% url 'search' %}">Search</a></li>
+                    <li><a id="profilenav" href="{% url 'profile' %}">Profile</a></li>
+                </ul>
+            </div>
+            
+            <div id="user_logout">
+                <div id="profile">
+                    <i class="fa-solid fa-user"></i>
+                     <p>{{ request.session.user_name }}</p>
+                </div>
+                <div id="Logout">
+                    <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                </div>
+            </div>
+            
+        </nav>
+
+    <div id="container">
+        <div id="profile_card">
+            <header id="profile-header">
+                <div class="profile-avatar" id="avtar_val">{{ user.username|slice:":2"|upper }}</div>
+                <h1 class="profile-name" id="name_val">{{ user.username }}</h1>
+            </header>
+
+            <section id="user_info">
+                <div class="stat-card" id="age">
+                    <span class="stat-value" id="age_val">{{ user.age }}</span>
+                    <span class="stat-label">Years Old</span>
+                </div>
+
+                <div class="stat-card" id="weight">
+                    <span class="stat-value" id="weight_val">{{ user.weight }}</span>
+                    <span class="stat-label">Weight (Kg)</span>
+                </div>
+
+                <div class="stat-card" id="height">
+                    <span class="stat-value" id="height_val">{{ user.height }}<sub>cm</sub></span>
+                    <span class="stat-label">Height</span>
+                </div>
+
+                <div class="stat-card" id="goal">
+                    <span class="stat-value" id="email_val">{{ user.email }}</span>
+                    <span class="stat-label">Email</span>
+                </div>
+
+                <div class="stat-card" id="activity">
+                    <span class="stat-value" id="gender_val">{{ user_nutrition.gender }}</span>
+                    <span class="stat-label">Gender</span>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src='{% static 'JS/top.js' %}'></script>
+    <script src="{% static 'JS/profile.js' %}"></script>
+</body>
+</html>

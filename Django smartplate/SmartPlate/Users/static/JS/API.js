@@ -51,22 +51,26 @@ btn.addEventListener('click', function(event) {
 
 //-----------------------------------------------------------------------------------------//
 
-const analyzeRecipeWithNinjas = async () => {
+const analyzeRecipeWithAINutrition = async () => {
   const textarea = document.querySelector(".recipe-textarea");
-  const ingredientsRaw = textarea.value.trim();
+  const inputText = textarea.value.trim();
 
-  if (!ingredientsRaw) {
+  if (!inputText) {
     alert("Please enter a recipe.");
     return;
   }
 
-  const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=1lb%20brisket%20with%20fries';
+  const url = 'https://ai-nutritional-facts.p.rapidapi.com/getNutritionalInfo';
   const options = {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'x-rapidapi-key': '1cfbd088a9msh490a3a8017fa725p160693jsn6de1529cff4e',
-      'x-rapidapi-host': 'nutrition-by-api-ninjas.p.rapidapi.com'
-    }
+      'x-rapidapi-host': 'ai-nutritional-facts.p.rapidapi.com',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      input: inputText
+    })
   };
 
   try {
@@ -76,39 +80,40 @@ const analyzeRecipeWithNinjas = async () => {
     }
 
     const result = await response.json();
-    
-    // Sum totals from all items
-    let totalCalories = 0;
-    let totalFat = 0;
-    let totalCarbs = 0;
-    let totalFiber = 0;
 
-    result.forEach(item => {
-      const fat = Number(item.fat_total_g) || 0;
-      const carbs = Number(item.carbohydrates_total_g) || 0;
-      const fiber = Number(item.fiber_g) || 0;
+    console.log(result);
 
-      totalFat += fat;
-      totalCarbs += carbs;
-      totalFiber += fiber;
+    const nutrition = result.totalNutrition || result.nutritionInfo || result;
 
-      totalCalories += (fat * 9) + (carbs * 4);
-    });
+    if (nutrition && nutrition["calories in kcal"]) {
+  document.getElementById("recipe-total").textContent =
+    `${Math.round(nutrition["calories in kcal"])} cal`;
 
-    // Update HTML values (round or fix to 1 decimal)
-    document.getElementById("recipe-total").textContent = `${Math.round(totalCalories)} cal`;
-    document.getElementById("recipe-fat-cal").textContent = `${totalFat.toFixed(1)} g`;
-    document.getElementById("recipe-carbs-cal").textContent = `${totalCarbs.toFixed(1)} g`;
-    document.getElementById("recipe-fiber-cal").textContent = `${totalFiber.toFixed(1)} g`;
+  document.getElementById("recipe-fat-cal").textContent =
+    `${Number(nutrition["total fat in g"]).toFixed(1)} g`;
+
+  document.getElementById("recipe-carbs-cal").textContent =
+    `${Number(nutrition["total carbohydrate in g"]).toFixed(1)} g`;
+
+  document.getElementById("recipe-fiber-cal").textContent =
+    `${Number(nutrition["dietary fiber in g"]).toFixed(1)} g`;
+
+  document.getElementById("recipe-protein-cal").textContent =
+    `${Number(nutrition["protein in g"]).toFixed(1)} g`;
+} else {
+  alert("Nutrition info is unavailable or incomplete.");
+}
+
 
   } catch (error) {
-    console.error("Nutrition API error:", error);
+    console.error("AI Nutrition API error:", error);
     alert("Failed to analyze recipe. Please try again.");
   }
 };
 
-// Connect button
+// Button listener
 document.querySelector(".recipe-btn").addEventListener("click", (event) => {
   event.preventDefault();
-  analyzeRecipeWithNinjas();
+  analyzeRecipeWithAINutrition();
 });
+
